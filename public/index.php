@@ -20,6 +20,10 @@ $config = require __DIR__ . '/../config.php';
 $app = new \Yee\Yee($config);
 $app->view(new \Yee\Views\Twig());
 
+
+$twig = $app->view()->getEnvironment();
+$twig->addGlobal( 'session', $_SESSION );
+
 new DatabaseManager();
 
 new Yee\Managers\RoutingCacheManager(
