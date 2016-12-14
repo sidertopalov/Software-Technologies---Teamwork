@@ -1,0 +1,73 @@
+{% include "./common/header.twig" %}
+
+<section>
+    <div class="container">
+        <div class="well">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1>My Account</h1>
+            </div>
+        </div>
+
+
+        <div class="row text-center">
+
+            <div class="col-sm-12 text-center">
+                <div class="photo-form-wrapper clearfix">
+                    <div class="row">
+
+                        <div class="col-md-4 col-sm-4">
+
+                        </div>
+
+                        <form method="post" id="changePass">
+
+                            <div class="col-md-4 col-sm-4">
+
+                                <h3 style="text-decoration: underline;"> Change Password </h3>
+                                <hr style="border-color: #2de713;">
+
+                                <div style="display:none" class="alert alert-danger" role="alert" id="errorMessage"></div>
+                                <div style="display:none" class="alert alert-success" role="alert" id="successMessage"></div>
+
+                                <input id="userEmail" name="userEmail" type="text" placeholder="First name" disabled value="{{userDetail.email}}">
+
+                                <input id="userPass" name="pass" type="password" placeholder="Password" value="">
+
+                                <!-- <input type="hidden" name="pStrinput" id="pStrinput" value="" /> -->
+                                <div class="group">
+                                    <div style="border-color: #e74c3c; width: 368px" id="passwordStrength"></div>
+                                    <input id="newPass" name="newPass" type="password" placeholder="New Password" value="">
+                                </div>
+
+                                <input id="userPassConf" name="passConf" type="password" placeholder="Confirm Password" value="">
+                                <div style="align-content: center">
+                                <input id="btnSaveChanges" type="submit" class="btn btn-primary btn-filled"  value="Save Changes">
+                                <a class="btn btn-default"  href="/account">Back >></a>
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <div class="col-md-4 col-sm-4">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4  col-xs-6">
+        </div>
+
+        <div class="col-sm-4  col-xs-12">
+
+        </div>
+    </div>
+    </div>
+
+</section>
+
+{% include "./common/footer.twig" %}

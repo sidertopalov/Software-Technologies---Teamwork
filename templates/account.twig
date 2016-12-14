@@ -1,0 +1,60 @@
+{% include "./common/header.twig" %}
+
+
+<!-- Begin page -->
+<div id="wrapper">
+
+
+<div class="container col-sm-12  text-center">
+    <div class="well" >
+        <h1>My Account</h1>
+
+
+        <p>This is Account page and some shit </p>
+        <div class="row text-center">
+
+            <!-- <div class="col-sm-12 text-center"> -->
+            <div class="photo-form-wrapper clearfix">
+                <div class="row">
+
+
+
+                    </div>
+
+                    <div class="col-sm-12 text-center">
+
+                        <form method="post" id="updateAccount">
+
+
+
+                            <hr style="border-color: #e74c3c;">
+
+                            <div style="display:none" class="alert alert-danger" role="alert" id="errorMessage"></div>
+                            <div style="display:none" class="alert alert-success" role="alert" id="successMessage"></div>
+
+                            <input disabled id="userEmail" name="userEmail" type="text" placeholder="First name" value="{{userDetail.email}}">
+
+                            <input disabled id="firstName" name="firstName" type="text" placeholder="First name" value="{{userDetail.firstName}}">
+
+                            <input disabled id="lastName" name="lastName" type="text" placeholder="Last name" value="{{userDetail.lastName}}">
+
+                            <div style="align-content: center">
+
+                            <input id="btnEdit"  style="margin-bottom: 30px; margin-top: 30px;"  type="submit" class="btn btn-primary btn-filled "   value="Edit">
+
+                            <a href="/changePass" id="changePass" class="btn btn-primary btn-filled" style="margin-bottom: 30px;margin-top: 30px;" >Change Password</a>
+
+                            <input style="display:none;" id="btnDone" type="submit" class="btn btn-primary btn-filled"  value="Done">
+
+                            <input style="display:none;" id="btnSaveChanges" type="submit" class="btn btn-primary btn-filled"  value="Save Changes">
+                            </div>
+                            <div>
+                            <a class="btn btn-default" href="/logout">Logout</a>
+                            </div>
+                        </form>
+                    </div>
+
+</div>
+
+
+{% include "./common/footer.twig" %}
