@@ -4,6 +4,8 @@ use Yee\Managers\Controller\Controller;
 use Yee\Managers\CacheManager;
 use App\Models\AjaxModel;
 use App\Models\AccountModel;
+use App\Models\ArticleModel;
+use App\Models\CategoryModel;
 
 class AjaxController extends Controller{
 
