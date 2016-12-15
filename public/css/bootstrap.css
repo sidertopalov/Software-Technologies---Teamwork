@@ -19,7 +19,11 @@ html {
 }
 body {
     background-image: url(../img/Abstract-Abstract-Background.jpg);
+    background-size: 100% auto ;
+    background-repeat: no-repeat;
+    margin: 0;
     
+}
   margin: 0;
     
 }
