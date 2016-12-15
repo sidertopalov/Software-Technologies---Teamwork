@@ -179,5 +179,63 @@ class AjaxController extends Controller{
         echo json_encode( $data );
     }
 
+
+    
+    /**
+     * @Route('/ajax/article')
+     * @Name('article.index')
+     * @Method('post')
+     */
+    public function postAddArticleAction() {
+
+        /** @var Yee\Yee $yee */
+        $app = $this->app;
+
+
+        //------> POST Variables <-------
+        $articleTitle = $app->request()->post('titleArticle');
+        $articleContent = $app->request()->post('contentArticle');
+        $categoryId = $app->request()->post('selectId');
+
+        $article = new ArticleModel();
+
+
+        if( 3 > strlen($articleTitle) && strlen($articleTitle) < 64) {
+
+            $error = "Title must be atleast 3 characters.";
+        }
+
+        if ( empty($articleContent) == true ) {
+            
+            $error = "Content text cant be empty.";
+        }
+
+        if (isset($error) == false) {
+
+            if(!$article->addComment($articleTitle, $articleContent, $categoryId)){
+                $error = "Don't try to down my DB sucker!";
+            }
+        }
+
+        if(isset($error)) {
+
+            $data = array(
+                'message'       => $error,
+                'error'         => false,
+                );
+
+
+        } else {
+
+            $data = array(
+                'message'       => "Succesfully updated!",
+                'success'       => true,
+                'error'         => true,
+                );
+        }
+        
+        echo json_encode( $data );
+    }
+
 }
 

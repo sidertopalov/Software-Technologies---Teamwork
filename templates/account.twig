@@ -7,14 +7,19 @@
 
 <div class="container col-sm-12  text-center">
     <div class="well" >
-        <h1>My Account</h1>
+    <div class="container">
 
+            <div class="col-sm-12 text-center">
+                {% if userDetail.firstName %}
+                    <h1>Welcome to your account {{userDetail.firstName }} {{userDetail.lastName}} </h1>    
+                {% else %}
+                    <h1>My Account!</h1>    
+                {% endif%}   
 
-        <p>This is Account page and some shit </p>
         <div class="row text-center">
 
             <!-- <div class="col-sm-12 text-center"> -->
-            <div class="photo-form-wrapper clearfix">
+         
                 <div class="row">
 
 
@@ -54,7 +59,7 @@
                         </form>
                     </div>
 
-</div>
+                </div>
 
 
 {% include "./common/footer.twig" %}

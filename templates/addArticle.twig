@@ -1,0 +1,68 @@
+{% include "./common/header.twig" %}
+
+<section>
+    <div class="container">
+        <div class="row">
+           
+        </div>
+
+            <div class="row text-center">
+                        
+                <!-- <div class="col-sm-12 text-center"> -->
+                    <div class="photo-form-wrapper clearfix">
+                        <div class="row">
+
+                                <div class="col-sm-12 text-center">
+
+                                    <form method="post" id="addArticle"  style="text-align:center" >
+
+                                            <h3 style="text-decoration: underline;"> Add Question </h3>
+                                            <hr style="border-color: #000000;">
+
+                                            <div style="display:none" class="alert alert-danger" role="alert" id="errorMessage"></div>
+                                            <div style="display:none" class="alert alert-success" role="alert" id="successMessage"></div>
+
+                                            <input id="titleArticle" name="titleArticle" type="text" placeholder="Title" style="margin-bottom: 15px" value="">
+
+                                            <!-- <input id="firstName" name="firstName" type="text" placeholder="First name" value=""> -->
+
+                                             <textarea class="form-control" id="contentArticle" name="contentArticle"></textarea><br>
+                                              <!-- <textarea id="myTextarea"></textarea> -->
+                                            
+                                            <select id="selectId" name="selectId" class="form-control">
+                                                {% for category in categoryDetails %}
+                                                    Category: <option value="{{category.id}}">
+                                                    {{ category.categoryName }}
+                                                    </option>
+                                                {% endfor %}
+                                            </select>
+                                            <br>
+                                            <input id="btnEdit" type="submit" class="btn btn-primary btn-filled"  value="Add Comment">
+                                    
+                                    </form>
+                                </div>
+
+                      
+                        </div>
+                    <!-- </div> -->
+                </div>
+            
+            </div>
+
+            <div class="col-sm-4  col-xs-6">
+            </div>
+
+            <div class="col-sm-4  col-xs-12">
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+{% include "./common/footer.twig" %}

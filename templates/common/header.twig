@@ -8,18 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="/css/passwordStrength.css" type="text/css" rel="stylesheet" media="all"/>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-    <meta charset="utf-8">
-    {#<link href="/../css/flexslider.min.css" rel="stylesheet" type="text/css" media="all"/>#}
-    {#<link href="/../css/line-icons.min.css" rel="stylesheet" type="text/css" media="all"/>#}
-    {#<link href="/../css/elegant-icons.min.css" rel="stylesheet" type="text/css" media="all"/>#}
-    {#<link href="/../css/lightbox.min.css" rel="stylesheet" type="text/css" media="all"/>#}
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
-    {#<link href="/../css/theme.css" rel="stylesheet" type="text/css" media="all"/>#}
-    {#<link href="/../css/custom.css" rel="stylesheet" type="text/css" media="all"/>#}
-    {#<link href="/../css/bootstrap-editable.css" type="text/css" rel="stylesheet" media="all"/>#}
     <link href="/css/passwordStrength.css" type="text/css" rel="stylesheet" media="all"/>
-
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="all"/>    
+    <meta charset="utf-8">  
+   
 
 </head>
 <style>
@@ -28,14 +21,30 @@
     }
 </style>
 <body>
-<main>
+
     <div class="topnav" id="myTopnav">
 
         <li><a class="active" href="/home">Home</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="#register">Register</a></li>
-        <li><a href="/logout">About</a></li>
 
+{% if session.isLogged == true %}
+
+        <li><a href="#">Category</a></li>
+        <li><a href="/article">Articles</a></li>
+        <li><a href="/logout">Log out</a></li>
+    {% if  session.isAdmin == 1%}
+        <li class="has-dropdown"><a href="#">Settings</a>
+                <ul class="subnav">
+                <a href="/category">Create Category</a>
+                <a href="/categoryList">Categories List</a>
+                <a href="/articleList">Articles List</a>
+                </ul>
+                </li>
+    {%endif%}    
+
+{%else%}
+                <li> <a href="/signup">Sign Up</a></li>
+                <li> <a href="/login">Login</a></li>
+{% endif %}
         <li class="icon">
             <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
 
@@ -52,6 +61,7 @@
             }
         }
     </script>
+    <main>
 
 
 
