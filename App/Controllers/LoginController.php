@@ -17,30 +17,25 @@ class LoginController extends Controller
            
         if (isset($_SESSION['isLogged']) === false) {
         
-             $javascript = array(
-
-                 '/js/login.js',
-                
-                 );
+            $javascript = array(
+                '/js/login.js',
+            );
 
             $data = array(
-
                 "title"         => "Login Controller",
                 "javascript"    => $javascript,
-
-                );
+            );
             
             $app->render('login.twig', $data);
         } else {
-
             $app->redirect('/');
         }
     }
 
-     /**
-     * @Route('/logout')
-     * @Name('login.index')
-     */
+    /**
+    * @Route('/logout')
+    * @Name('login.index')
+    */
     public function logoutAction()
     {
         $app = $this->getYee();
@@ -48,12 +43,8 @@ class LoginController extends Controller
         $_SESSION['isLogged'] = false;
         $_SESSION['userEmail'] = null;
 
-      //  session_unset();
         session_destroy();
 
         $app->redirect("/");
     }
-
-
-
 }
