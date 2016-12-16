@@ -1,0 +1,43 @@
+{% include "./common/header.twig" %}
+
+
+<section>
+	
+	<div class="container">
+
+		<div class="text-center">
+				<h2>List of Category</h2>
+		</div>
+		<hr style="border-color: #e74c3c;">
+		<br>
+		<div class="table-responsive">
+            <div class="well">
+			<table class="table table-striped">
+				<thead>
+			      <tr>
+			      	<th>ID</th>
+			        <th>Category</th>
+			        <th>Action</th>
+			      </tr>
+	    		</thead>
+               
+	    		<tbody>
+			        {% for category in categoryDetails  %}
+			        	<tr>
+					        <td>{{category.id}}</td>
+					        <td>{{category.name}}</td>
+					        <td>
+					        <a class="btn btn-info btn-filled btn-sm active" href="/category/view/{{category.name}}">View Category</a>
+					        </td>
+				      	</tr>
+			        {% endfor %}
+		      	</tbody>
+
+			</table>
+        
+		</div>
+        </div>
+	</div>
+</section>
+
+{% include "./common/footer.twig" %}
