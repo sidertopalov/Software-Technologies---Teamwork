@@ -4,42 +4,39 @@ namespace App\Models;
 
 class ArticleModel {
 
-  private $app;
+    private $app;
 
-  public function __construct() {
+    public function __construct() {
 
-    $this->app = \Yee\Yee::getInstance();
+        $this->app = \Yee\Yee::getInstance();
 
-  }
-
-  public function addComment($articleTitle, $articleContent, $categoryId) {
-
-    $app = $this->app;
-    
-    $email = $_SESSION['userEmail'];
-    $dateTimeNow = date("Y-m-d H:i:s");
-
-    $data = array(
-
-      'title' => $articleTitle,
-      'author_id' => $email,
-      'date' => $dateTimeNow,
-      'content' => $articleContent,
-      'category_Id' => $categoryId,
-
-      );
-
-    if( $app->db['default']->insert('article',$data) ) {
-      return true;
     }
-    return false;
 
-  }
+    public function addComment($articleTitle, $articleContent, $categoryId) {
 
-  public function getComments(){
+        $app = $this->app;
 
-    $app = $this->app;
+        $email = $_SESSION['userEmail'];
+        $dateTimeNow = date("Y-m-d H:i:s");
 
-    return $app->db['default']->get('article');
-  }
+        $data = array(
+            'title' => $articleTitle,
+            'author_id' => $email,
+            'date' => $dateTimeNow,
+            'content' => $articleContent,
+            'category_Id' => $categoryId,
+        );
+
+        if( $app->db['default']->insert('article',$data) ) {
+            return true;
+        }
+        return false;
+
+    }
+
+    public function getComments(){
+
+        $app = $this->app;
+        return $app->db['default']->get('article');
+    }
 }

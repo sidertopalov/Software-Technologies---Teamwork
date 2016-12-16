@@ -139,6 +139,6 @@ class CategoryController extends Controller {
                 'categoryDetails' => $categoryList,
             ); 
 
-            $app->render('/pages/categoryList.tpl',$data);
+            $app->render('/listCategory.twig',$data);
      }
 }

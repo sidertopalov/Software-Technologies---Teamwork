@@ -54,12 +54,10 @@ class ArticleController extends Controller {
         /** @var Yee\Yee $yee */
         $app = $this->getYee();
 
-
-        if ($_SESSION['isAdmin'] != 1) {
+        if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
         
             $app->redirect("/account");
         }
-
 
         $article = new ArticleModel();
 

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="/css/passwordStrength.css" type="text/css" rel="stylesheet" media="all"/>
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="/css/passwordStrength.css" type="text/css" rel="stylesheet" media="all"/>
     <link href="/css/style.css" type="text/css" rel="stylesheet" media="all"/>    
@@ -28,14 +28,17 @@
 
 {% if session.isLogged == true %}
 
-        <li><a href="#">Category</a></li>
-        <li><a href="/article">Articles</a></li>
+        <li><a href="/categorySelect">Category</a></li>
+        <li><a href="/article">New Article</a></li>
+        <li><a href="/account"> My Account</a></li>
         <li><a href="/logout">Log out</a></li>
+        <li><a> Hello,{{ session.userEmail }}! </a></li>
+
     {% if  session.isAdmin == 1%}
         <li class="has-dropdown"><a href="#">Settings</a>
                 <ul class="subnav">
                 <a href="/category">Create Category</a>
-                <a href="/categoryList">Categories List</a>
+                <a href="/categorySelect">Categories List</a>
                 <a href="/articleList">Articles List</a>
                 </ul>
                 </li>

@@ -49,7 +49,7 @@ class AjaxController extends Controller{
 
             $_SESSION['isLogged'] = true;
             $_SESSION['userEmail'] = $loginEmail;
-
+            $_SESSION['isAdmin'] = 0;
 
             $data = array(
                 "title"         => "AjaxControllerSuccess",
@@ -214,11 +214,12 @@ class AjaxController extends Controller{
 
         if (isset($error) == false) {
 
-            if(!$article->addComment($articleTitle, $articleContent, $categoryId)){
+            // var_dump($article->addComment($articleTitle, $articleContent, $categoryId));
+            if($article->addComment($articleTitle, $articleContent, $categoryId)){
                 $error = "Don't try to down my DB sucker!";
             }
         }
-
+         // die;
         if(isset($error)) {
 
             $data = array(
@@ -233,7 +234,8 @@ class AjaxController extends Controller{
                 'message'       => "Succesfully updated!",
                 'success'       => true,
                 'error'         => true,
-                );
+                'redirectTo'    => "/category/view/". $categoryId,
+            );
         }
         
         echo json_encode( $data );
