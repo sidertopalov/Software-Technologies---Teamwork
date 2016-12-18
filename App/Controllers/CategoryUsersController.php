@@ -20,7 +20,7 @@ class CategoryUsersController extends Controller {
         $categoryUserModel = new CategoryUserModel();
         $categoryProperty = $categoryUserModel->getCategory();
 
-        // var_dump($categoryProperty);
+       //  var_dump($categoryProperty);
         // die;
         $data = array(
 
@@ -42,23 +42,29 @@ class CategoryUsersController extends Controller {
         
         $categoryName = $name;
 
+     //   var_dump($categoryName);
+
         $categoryUserModel = new CategoryUserModel();
 
         // take id from category name
         $categoryId = $categoryUserModel->getCategoryIdByName($categoryName);
+        
+      //      var_dump($categoryId);
 
         if (is_null($categoryId)) {
             $app->redirect('/categorySelect');
         }
 
         // take all articles by category id
-        $articleListByCategoryId = array_reverse($categoryUserModel->getArticlesByCategoryId($categoryId));
+        $articleListByCategoryId = array_reverse($categoryUserModel->getArticlesByCategoryId($categoryName));
+
+       // var_dump($articleListByCategoryId);
 
         $data = array(
             'title' => $categoryName,
             'articleDetails' => $articleListByCategoryId,
         ); 
-        var_dump($articleListByCategoryId); die;
+        //var_dump($data); die;
         $app->render('/categoryUserList.twig',$data);
     }
 
