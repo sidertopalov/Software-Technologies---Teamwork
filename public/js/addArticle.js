@@ -15,7 +15,11 @@ $("#addArticle").submit(function(e){
 				$('#errorMessage').hide();
 				$('#successMessage').html( data.message ).fadeTo(1,1000);
 				
-			  	window.location.href = data.redirectTo;
+				setTimeout(function () {
+  				window.location.href = data.redirectTo; // the redirect goes here
+
+				},1000)
+			  	
 				// $('#contentArticle').val("");
 				// $('#titleArticle').val("");
 			}

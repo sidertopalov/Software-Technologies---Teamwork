@@ -95,7 +95,7 @@ class CategoryUsersController extends Controller {
             'title' => $categoryName,
             'articleDetails' => $articleDetails,
         ); 
-        var_dump($articleDetails); die;
+       // var_dump($articleDetails); die;
         $app->render('/articleRead.twig',$data);
     } 
 
