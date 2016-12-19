@@ -32,7 +32,7 @@
         <li><a href="/article">New Article</a></li>
         <li><a href="/account"> My Account</a></li>
         <li><a href="/logout">Log out</a></li>
-        <li><a> Hello,{{ session.userEmail }}! </a></li>
+        <li style="float: right;"><a> Hello,{{ session.userEmail }}! </a></li>
 
     {% if  session.isAdmin == 1%}
         <li class="has-dropdown"><a href="#">Settings</a>

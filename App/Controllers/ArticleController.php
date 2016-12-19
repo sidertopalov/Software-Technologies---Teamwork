@@ -54,7 +54,7 @@ class ArticleController extends Controller {
         /** @var Yee\Yee $yee */
         $app = $this->getYee();
 
-        if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
+        if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 0) {
         
             $app->redirect("/account");
         }
@@ -67,13 +67,14 @@ class ArticleController extends Controller {
         // order by date DESC
         $commList = array_reverse($commentsList);
 
-        // var_dump();
+        // var_dump($commList);
         // die;
 
         $data = array(
                 'title' => 'List of Articles',
                 'commentDetails' => $commList,
                 );
+        //var_dump($data);die;
 
         $app->render('articleList.twig',$data);
     }
