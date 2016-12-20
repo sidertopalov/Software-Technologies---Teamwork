@@ -16,8 +16,7 @@ class SignupController extends Controller
 		$app = $this->getYee();
 
 		$signupModel = new SignupModel();
-		$signupModel->sayHi();
-		echo "<br> Hello from SignupController! ";
-
+		
+		$app->render('/signup.twig');
 	}
 }

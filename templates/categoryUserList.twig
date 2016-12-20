@@ -6,7 +6,7 @@
 	<div class="container">
 
 		<div class="text-center">
-				<h2>List of Questions</h2>
+				<h2>List of Articles</h2>
 		</div>
 		<hr style="border-color: #e74c3c;">
 		<br>
@@ -14,7 +14,7 @@
 
 		</div>
 
-		{% for comments in commentDetails  %}
+		{% for comments in articleDetails  %}
 
 			<section>
 				<div class="container table col-md-12 col-sm-12 text-center" >
@@ -36,7 +36,7 @@
 				        </div>
 				        <br>
 				        <div>
-				        	<hr style="border-color: #000">
+				        	<hr style="border-color: #000">				        	
 					        	<div >{{ comments.content | raw }}</div>
 					       	<hr style="border-color: #000">
 					       	<div><b>Date: {{comments.date}}</b></div>
@@ -48,12 +48,8 @@
 					
 				</div>
 	        </section>
-
         {% endfor %}
-
 	</div>
-
-
 </section>
 
 

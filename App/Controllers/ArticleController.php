@@ -27,8 +27,6 @@ class ArticleController extends Controller {
                 '/js/addArticle.js',
                 );
 
-
-
             $data = array(
                 'title'             => 'Add Article',
                 'javascript'        => $javascript,
@@ -63,12 +61,9 @@ class ArticleController extends Controller {
 
         // order by date ASC
         $commentsList = $article->getComments();
-
+        
         // order by date DESC
         $commList = array_reverse($commentsList);
-
-        // var_dump();
-        // die;
 
         $data = array(
                 'title' => 'List of Articles',

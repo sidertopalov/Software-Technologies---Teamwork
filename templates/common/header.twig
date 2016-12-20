@@ -25,6 +25,36 @@
                 <li class="icon">
                     <a href="javascript:void(0);" style="font-size:15px;" onclick="myFunction()">☰</a>
 
+<<<<<<< HEAD
+=======
+</head>
+<style>
+    #wrapper{
+        overflow: visible! important;
+    }
+</style>
+<body>
+
+    <div class="topnav" id="myTopnav">
+
+        <li><a class="active" href="/home">Home</a></li>
+
+{% if session.isLogged == true %}
+
+        <li><a href="/categorySelect">Category</a></li>
+        <li><a href="/article">New Article</a></li>
+        <li><a href="/account"> My Account</a></li>
+        <li><a href="/logout">Log out</a></li>
+        <li style="float: right;"><a> Hello,{{ session.userEmail }}! </a></li>
+
+    {% if  session.isAdmin == 1%}
+        <li class="has-dropdown"><a href="#">Settings</a>
+                <ul class="subnav">
+                <a href="/category">Create Category</a>
+                <a href="/categoryList">Categories List</a>
+                <a href="/articleList">Articles List</a>
+                </ul>
+>>>>>>> aa68e68642a754ea2a8388e039d2386914dd0113
                 </li>
                 {% if  session.isAdmin == 1%}
 <!--                  -->

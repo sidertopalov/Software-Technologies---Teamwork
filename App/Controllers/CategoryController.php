@@ -34,11 +34,12 @@ class CategoryController extends Controller {
         }
 
         if ($_SESSION['isAdmin']) {
-          $app->render('/categoryAdd.twig',$data);
+
+            $app->render('/categoryAdd.twig',$data);
 
         } else {
 
-          $app->redirect('/account'); 
+            $app->redirect('/account'); 
 
         }
 
@@ -49,71 +50,63 @@ class CategoryController extends Controller {
      */
      public function updateCategory($id) {
 
-          $app = $this->getYee();
-          
-          $categoryId = $id;
+        $app = $this->getYee();
 
-          if ($_SESSION['isAdmin'] != 1) {
+        if ($_SESSION['isAdmin'] != 1) {
             $app->redirect('/account');
-          }
+        }
 
-          $categoryModel = new CategoryModel();
-          $categoryProperty = $categoryModel->getCategoryById($categoryId);
+        $categoryModel = new CategoryModel();
+        $categoryDetails = $categoryModel->getCategoryById($id);
 
-          if ($categoryProperty == null) {
+        if ($categoryDetails == null) {
               
-              $app->redirect('/categoryList');
-          }
+           $app->redirect('/categoryList');
+        }
 
-
-          $javascript = array(
-
+        $javascript = array(
             '/js/categoryUpdate.js',
-            );
-
-
-          $data = array(
+        );
+        // var_dump($categoryDetails); die;
+        $data = array(
             'title' => 'Update Category',
             'javascript' => $javascript,
-            'categoryId' => $categoryId,
-            'categoryName' => $categoryProperty['name'],
-            ); 
-          $app->render('/categoryUpdate.tpl',$data);
+            'category' => $categoryDetails,
+        );
+        $app->render('/categoryUpdate.twig',$data);
      }
 
      /**
-     * @Route('/categoryDelete/:id') 
+     * @Route('/categoryDelete/:id')
      * @Name('updateCategory.index')
      */
      public function deleteCategory($id) {
 
-          $app = $this->getYee();
-
-          if ($_SESSION['isAdmin'] != 1) {
+        $app = $this->getYee();
+        if ($_SESSION['isAdmin'] != 1) {
             $app->redirect('/myProject/account');
-          }
+        }
 
-          $categoryModel = new CategoryModel();
-          $categoryProperty = $categoryModel->getCategoryById($id);
+        $categoryModel = new CategoryModel();
+        $categoryProperty = $categoryModel->getCategoryById($id);
 
-          if ($categoryProperty == null) {
-              
-              $app->redirect('/categoryList');
-          }
+        if ($categoryProperty == null) {      
+            $app->redirect('/categoryList');
+        }
 
-          $javascript = array(
+        $javascript = array(
+           '/js/categoryDelete.js',
+        );
 
-            '/js/categoryDelete.js',
-            );
-
-          $data = array(
-            'title' => 'Delete Category',
-            'javascript' => $javascript,
-            'categoryId' => $categoryProperty['id'],      
-            'categoryName' => $categoryProperty['name'],
-            ); 
-          $app->render('/pages/categoryDelete.tpl',$data);
-     }
+        $data = array(
+           'title' => 'Delete Category',
+           'javascript' => $javascript,    
+           'categoryId' => $categoryProperty['id'],
+           'categoryName' => $categoryProperty['category'],
+        );
+        
+        $app->render('/categoryDelete.twig',$data);
+    }
 
      /**
      * @Route('/categoryList') 
@@ -121,24 +114,24 @@ class CategoryController extends Controller {
      */
      public function listCategory() {
 
-            $app = $this->getYee();
+        $app = $this->getYee();
 
-            $categoryModel = new CategoryModel();
-            $categoryList = $categoryModel->getCategory();
+        $categoryModel = new CategoryModel();
+        $categoryList = $categoryModel->getCategory();
+        // var_dump($categoryList); die;
+        if (!isset($_SESSION['isLogged']) ) {
+            $app->redirect('/login');
+        }
 
-            if (!isset($_SESSION['isLogged']) ) {
-                $app->redirect('/login');
-            }
+        if ($_SESSION['isAdmin'] != 1) {
+            $app->redirect('/account');
+        }
+        // var_dump($categoryList); die;
+        $data = array(
+            'title' => 'List Category',
+            'categoryDetails' => $categoryList,
+        );
 
-            if ($_SESSION['isAdmin'] != 1) {
-                $app->redirect('/account');
-            }
-
-            $data = array(
-                'title' => 'List Category',
-                'categoryDetails' => $categoryList,
-            ); 
-
-            $app->render('/listCategory.twig',$data);
+        $app->render('/listCategory.twig',$data);
      }
 }

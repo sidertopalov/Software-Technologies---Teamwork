@@ -12,7 +12,7 @@ class ArticleModel {
 
     }
 
-    public function addComment($articleTitle, $articleContent, $categoryId) {
+    public function addComment($articleTitle, $articleContent, $category) {
 
         $app = $this->app;
 
@@ -24,10 +24,10 @@ class ArticleModel {
             'author_id' => $email,
             'date' => $dateTimeNow,
             'content' => $articleContent,
-            'category_Id' => $categoryId,
+            'category' => $category,
         );
 
-        if( $app->db['default']->insert('article',$data) ) {
+        if( $app->db['default']->insert('articles',$data) ) {
             return true;
         }
         return false;
@@ -37,6 +37,6 @@ class ArticleModel {
     public function getComments(){
 
         $app = $this->app;
-        return $app->db['default']->get('article');
+        return $app->db['default']->get('articles');
     }
 }
