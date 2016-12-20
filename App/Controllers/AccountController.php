@@ -23,11 +23,8 @@ class AccountController extends Controller {
             $accDetail = $myAccount->getAccountDetails();
 
             $javascript = array(
-
                 '/js/updateAccount.js',
-
             );
-
 
             $data = array(
                 'title' => 'Account Controller',

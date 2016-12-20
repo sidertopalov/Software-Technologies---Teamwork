@@ -20,10 +20,9 @@ class CategoryUsersController extends Controller {
         $categoryUserModel = new CategoryUserModel();
         $categoryProperty = $categoryUserModel->getCategory();
 
-       //  var_dump($categoryProperty);
-        // die;
-        $data = array(
+        sort($categoryProperty);
 
+        $data = array(
             'title' => 'List of Category',
             'categoryDetails' => $categoryProperty,
           );
@@ -42,60 +41,49 @@ class CategoryUsersController extends Controller {
         
         $categoryName = $name;
 
-     //   var_dump($categoryName);
-
         $categoryUserModel = new CategoryUserModel();
 
-        // take id from category name
-        $categoryId = $categoryUserModel->getCategoryIdByName($categoryName);
+        // check if category exists
+        $category = $categoryUserModel->getCategoryIdByName($categoryName);
         
-      //      var_dump($categoryId);
-
-        if (is_null($categoryId)) {
+        
+        if (is_null($category)) {
             $app->redirect('/categorySelect');
         }
-
-        // take all articles by category id
-        $articleListByCategoryId = array_reverse($categoryUserModel->getArticlesByCategoryId($categoryName));
-
-       // var_dump($articleListByCategoryId);
-
+        
+        // take all articles by category
+        $articleListByCategoryId = array_reverse($categoryUserModel->getArticlesByCategory($categoryName));
+        
         $data = array(
             'title' => $categoryName,
             'articleDetails' => $articleListByCategoryId,
-        ); 
-        //var_dump($data); die;
+        );
+
         $app->render('/categoryUserList.twig',$data);
     }
 
 
     /**
-    * @Route('/read/question/:name')
+    * @Route('/read/article/:id')
     * @Name('readArticle.index')
     */
-    public function readArticleAction($name){
+    public function readArticleAction($articleId){
 
         $app = $this->getYee();
-        
-        $categoryName = $name;
 
         $categoryUserModel = new CategoryUserModel();
 
-        // take article by name
-        $articleDetails = $categoryUserModel->getArticleDetailsByName($categoryName);
+        // take article by id
+        $articleDetails = $categoryUserModel->getArticleDetailsById($articleId);
 
         // if article doesn't exist redirect to categorySelect.
         if (is_null($articleDetails)) {
             $app->redirect('/categorySelect');
         }
 
-        
-
         $data = array(
-            'title' => $categoryName,
             'articleDetails' => $articleDetails,
-        ); 
-       // var_dump($articleDetails); die;
+        );
         $app->render('/articleRead.twig',$data);
     } 
 

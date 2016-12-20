@@ -27,8 +27,6 @@ class ArticleController extends Controller {
                 '/js/addArticle.js',
                 );
 
-
-
             $data = array(
                 'title'             => 'Add Article',
                 'javascript'        => $javascript,
@@ -54,7 +52,7 @@ class ArticleController extends Controller {
         /** @var Yee\Yee $yee */
         $app = $this->getYee();
 
-        if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 0) {
+        if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] != 1) {
         
             $app->redirect("/account");
         }
@@ -63,18 +61,14 @@ class ArticleController extends Controller {
 
         // order by date ASC
         $commentsList = $article->getComments();
-
+        
         // order by date DESC
         $commList = array_reverse($commentsList);
-
-        // var_dump($commList);
-        // die;
 
         $data = array(
                 'title' => 'List of Articles',
                 'commentDetails' => $commList,
                 );
-        //var_dump($data);die;
 
         $app->render('articleList.twig',$data);
     }

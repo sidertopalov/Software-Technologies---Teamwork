@@ -19,9 +19,6 @@ $("#addArticle").submit(function(e){
   				window.location.href = data.redirectTo; // the redirect goes here
 
 				},1000)
-			  	
-				// $('#contentArticle').val("");
-				// $('#titleArticle').val("");
 			}
 		}
 	});

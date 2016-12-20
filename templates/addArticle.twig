@@ -23,19 +23,17 @@
                                             <div style="display:none" class="alert alert-success" role="alert" id="successMessage"></div>
 
                                             <input id="titleArticle" name="titleArticle" type="text" placeholder="Title" style="margin-bottom: 15px" value="">
-
-                                            <!-- <input id="firstName" name="firstName" type="text" placeholder="First name" value=""> -->
                                                 
                                             <div style="width:800px;margin:0 auto;">
                                                
                                              <textarea class="form-control " id="contentArticle" name="contentArticle"></textarea><br>
-                                              <!-- <textarea id="myTextarea"></textarea> -->
+                                             
                                         </div>
                                       
                                             <select id="selectId" name="selectId" class="form-inline">
                                                 {% for category in categoryDetails %}
-                                                    Category: <option value="{{category.name}}">
-                                                    {{ category.name }}
+                                                    Category: <option value="{{category.category}}">
+                                                    {{ category.category }}
                                                     </option>
                                                 {% endfor %}
                                             </select>

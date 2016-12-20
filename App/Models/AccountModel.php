@@ -36,12 +36,10 @@ class AccountModel {
     public function updateAccount() {
 
         $app = $this->app;
-
-
-
+        
         $data = array(
-            'firstName' => $this->firstName,
-            'lastName'=> $this->lastName,
+            'first_name' => $this->firstName,
+            'last_name'=> $this->lastName,
         );
 
 

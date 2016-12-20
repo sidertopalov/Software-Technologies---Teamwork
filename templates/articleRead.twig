@@ -11,8 +11,6 @@
 		<hr style="border-color: #e74c3c;">
 		<br>
 
-		{% for comment in articleDetails  %}
-
 			<section>
 				<div class="container table col-md-12 col-sm-12 text-center" >
 
@@ -22,21 +20,21 @@
 					<div class="col-md-8 col-sm-8 text-center">
 						<div>
 				        	<h3>
-					        	Title:<b>{{comment.title}}</b>
+					        	Title:<b>{{ articleDetails.title }}</b>
 				        	</h3>
 				        </div>
 						<div class="row">
-					        <b>Author:</b><b style="color: #e74c3c">{{comment.author_id}}</b>
+					        <b>Author:</b><b style="color: #e74c3c">{{ articleDetails.author_id }}</b>
 				        </div>
 				        <div class="row">
-				        	<p style="color:green;" >Category:{{comment.category_id}}</p>
+				        	<p style="color:green;" >Category:{{ articleDetails.category }}</p>
 				        </div>
 				        <br>
 				        <div>
 				        	<hr style="border-color: #000">
-					        	<div >{{ comment.content | raw }}</div>
+					        	<div >{{ articleDetails.content | raw }}</div>
 					       	<hr style="border-color: #000">
-					       	<div><b>Date: {{comment.date}}</b></div>
+					       	<div><b>Date: {{ articleDetails.date }}</b></div>
 				       	</div>
 			        </div>
 		        </div>
@@ -45,9 +43,6 @@
 					
 				</div>
 	        </section>
-
-        {% endfor %}
-
 	</div>
 
 

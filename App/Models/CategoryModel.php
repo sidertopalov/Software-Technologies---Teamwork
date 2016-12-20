@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+// Admin Panel Model
 
 class CategoryModel {
 
@@ -11,65 +12,54 @@ class CategoryModel {
         $app = \Yee\Yee::getInstance();
 
         $data = array(
-            
-            'name' => $category,
-          );
+            'category' => $category,
+        );
 
-        $app->db['default']->insert('category',$data);
+        $app->db['default']->insert('categories',$data);
     }
-
 
     public function getCategory() {
     
-       $app = \Yee\Yee::getInstance();
+        $app = \Yee\Yee::getInstance();
 
-      return $app->db['default']->get('category');
+        return $app->db['default']->get('categories');
     }
-
-
 
     public function isExistCategory($categoryName) {
 
         $app = \Yee\Yee::getInstance();
 
-        if ($app->db['default']->where('name',$categoryName)->getOne('category')) {
+        if ($app->db['default']->where('category',$categoryName)->getOne('categories')) {
             return true;
         }
         return false;
 
     }
 
-
-
     public function getCategoryById($id) {
 
         $app = \Yee\Yee::getInstance();
 
-        return $app->db['default']->where('id',$id)->getOne('category');
+        return $app->db['default']->where('id',$id)->getOne('categories');
     }
 
+    public function updateCategoryById($id, $name) {
 
+        $app = \Yee\Yee::getInstance();
 
-    public function updateCategoryById($id,$name) {
-
-      $app = \Yee\Yee::getInstance();
-
-      $data = array(
-
-            'name' => $name,
+        $data = array(
+            'category' => $name,
         );
 
-      $app->db['default']->where('id',$id)->update('category',$data);
+        return $app->db['default']->where('id',$id)->update('categories',$data);
     }
-
-
 
     public function deleteCategory($id) {
 
-      $app = \Yee\Yee::getInstance();
+        $app = \Yee\Yee::getInstance();
 
-      $app->db['default']->where('id',$id)->delete('category');
+        $category = $this->getCategoryById($id);
+        $app->db['default']->where('category', $category['category'])->delete('articles');
+        $app->db['default']->where('id',$id)->delete('categories');
     }
-
-
 }

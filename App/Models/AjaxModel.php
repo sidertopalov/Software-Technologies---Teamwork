@@ -42,7 +42,7 @@ class AjaxModel {
 	public function userProperty() {
 
 		$app = $this->app;
-		// return var_dump($app);
+		
 		return $app->db['default']->where("email", $this->loginEmail)->getOne("users");
 
 	}

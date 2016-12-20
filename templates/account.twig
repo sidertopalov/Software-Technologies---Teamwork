@@ -10,11 +10,11 @@
     <div class="container">
 
             <div class="col-sm-12 text-center">
-                {% if userDetail.firstName %}
-                    <h1>Welcome to your account {{userDetail.firstName }} {{userDetail.lastName}} </h1>    
+                {% if userDetail.first_name %}
+                    <h1>Welcome to your account {{userDetail.first_name }} {{userDetail.last_name}} </h1>    
                 {% else %}
                     <h1>My Account!</h1>    
-                {% endif%}   
+                {% endif %}   
                     <form>
                 <img src="/img/cae6c66a-5cb9-4134-aaf2-8052063f9679.jpg" alt="..." class="img-circle">
                 </form>
@@ -41,9 +41,9 @@
 
                             <input disabled id="userEmail" name="userEmail" type="text" placeholder="First name" value="{{userDetail.email}}">
 
-                            <input disabled id="firstName" name="firstName" type="text" placeholder="First name" value="{{userDetail.firstName}}">
+                            <input disabled id="firstName" name="firstName" type="text" placeholder="First name" value="{{userDetail.first_name}}">
 
-                            <input disabled id="lastName" name="lastName" type="text" placeholder="Last name" value="{{userDetail.lastName}}">
+                            <input disabled id="lastName" name="lastName" type="text" placeholder="Last name" value="{{userDetail.last_name}}">
 
                             <div style="align-content: center">
 
