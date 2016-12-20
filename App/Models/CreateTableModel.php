@@ -65,7 +65,7 @@ class CreateTableModel
 						  author_id varchar(80) NOT NULL,
 						  date datetime NOT NULL,
 						  content text NOT NULL,
-						  category varchar(50) REFERENCES categories(category),
+						  category varchar(50) NOT NULL,
 						  PRIMARY KEY (id)
 						)"
 				);

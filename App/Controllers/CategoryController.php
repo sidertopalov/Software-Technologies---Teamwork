@@ -20,13 +20,12 @@ class CategoryController extends Controller {
         $javascript = array(
 
             '/js/categoryAdd.js',
-          );
+        );
         
         $data = array(
-
             'title' => 'New Category',
             'javascript' => $javascript,
-          );
+        );
 
         if ( !isset($_SESSION['isLogged']) ) {
 
@@ -67,7 +66,7 @@ class CategoryController extends Controller {
         $javascript = array(
             '/js/categoryUpdate.js',
         );
-        // var_dump($categoryDetails); die;
+
         $data = array(
             'title' => 'Update Category',
             'javascript' => $javascript,
@@ -118,7 +117,7 @@ class CategoryController extends Controller {
 
         $categoryModel = new CategoryModel();
         $categoryList = $categoryModel->getCategory();
-        // var_dump($categoryList); die;
+
         if (!isset($_SESSION['isLogged']) ) {
             $app->redirect('/login');
         }
@@ -126,7 +125,7 @@ class CategoryController extends Controller {
         if ($_SESSION['isAdmin'] != 1) {
             $app->redirect('/account');
         }
-        // var_dump($categoryList); die;
+        
         $data = array(
             'title' => 'List Category',
             'categoryDetails' => $categoryList,

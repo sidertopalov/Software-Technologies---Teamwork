@@ -1,67 +1,48 @@
 {% include "./common/header.twig" %}
 
 
+
 <!-- Begin page -->
-<div id="wrapper">
 
 
-<div class="container col-sm-12  text-center">
-   
-    <div class="container">
 
             <div class="col-sm-12 text-center">
                 {% if userDetail.first_name %}
                     <h1>Welcome to your account {{userDetail.first_name }} {{userDetail.last_name}} </h1>    
                 {% else %}
                     <h1>My Account!</h1>    
-                {% endif %}   
-                    <form>
-                <img src="/img/cae6c66a-5cb9-4134-aaf2-8052063f9679.jpg" alt="..." class="img-circle">
-                </form>
-        <div class="row text-center">
-
-            <!-- <div class="col-sm-12 text-center"> -->
+                {% endif%}
          
-                <div class="row">
+
+                    <form method="post" id="updateAccount">
 
 
 
-                    </div>
+                        <hr style="border-color: #e74c3c;">
 
-                    <div class="col-sm-12 text-center">
+                        <div style="display:none" class="alert alert-danger" role="alert" id="errorMessage"></div>
+                        <div style="display:none" class="alert alert-success" role="alert" id="successMessage"></div>
 
-                        <form method="post" id="updateAccount">
+                        <input disabled id="userEmail" name="userEmail" type="text" placeholder="First name" value="{{userDetail.email}}">
 
+                        <input disabled id="firstName" name="firstName" type="text" placeholder="First name" value="{{userDetail.first_name}}">
 
+                        <input disabled id="lastName" name="lastName" type="text" placeholder="Last name" value="{{userDetail.last_name}}">
 
-                            <hr style="border-color: #e74c3c;">
+                        <div style="align-content: center">
 
-                            <div style="display:none" class="alert alert-danger" role="alert" id="errorMessage"></div>
-                            <div style="display:none" class="alert alert-success" role="alert" id="successMessage"></div>
+                        <input id="btnEdit"  style="margin-bottom: 30px; margin-top: 30px;"  type="submit" class="buttonRed" value="Edit">
 
-                            <input disabled id="userEmail" name="userEmail" type="text" placeholder="First name" value="{{userDetail.email}}">
+                        <a href="/changePass" id="changePass" class="buttonNew " style="margin-bottom: 30px;margin-top: 30px;">Change Password</a>
 
-                            <input disabled id="firstName" name="firstName" type="text" placeholder="First name" value="{{userDetail.first_name}}">
+                        <input style="display:none; margin-bottom: 30px;margin-top: 30px;" id="btnDone" type="submit" class="buttonNew"  value="Done">
 
-                            <input disabled id="lastName" name="lastName" type="text" placeholder="Last name" value="{{userDetail.last_name}}">
-
-                            <div style="align-content: center">
-
-                            <input id="btnEdit"  style="margin-bottom: 30px; margin-top: 30px;"  type="submit" class="btn btn-primary btn-filled "   value="Edit">
-
-                            <a href="/changePass" id="changePass" class="btn btn-primary btn-filled" style="margin-bottom: 30px;margin-top: 30px;">Change Password</a>
-
-                            <input style="display:none;" id="btnDone" type="submit" class="btn btn-primary btn-filled"  value="Done">
-
-                            <input style="display:none;" id="btnSaveChanges" type="submit" class="btn btn-primary btn-filled"  value="Save Changes">
-                            </div>
-                            <div>
-                            <a class="btn btn-default" href="/logout">Logout</a>
-                            </div>
-                        </form>
-                    </div>
-
+                        <input style="display:none; margin-bottom: 30px;margin-top: 30px;" id="btnSaveChanges" type="submit" class="buttonGreen" value="Save Changes">
+                        </div>
+                      
+                    </form>
                 </div>
 
+      
 
 {% include "./common/footer.twig" %}

@@ -56,9 +56,7 @@ class AccountController extends Controller {
             $accDetail = $myAccount->getAccountDetails();
 
             $javascript = array(
-
                 '/js/changePass.js',
-
             );
 
             $data = array(

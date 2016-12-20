@@ -14,6 +14,14 @@ class CreateDynamicallyTableController extends Controller
     {
     	$app = $this->getYee();
 
+        if (!isset($_SESSION['isLogged']) ) {
+            $app->redirect('/login');
+        }
+
+        if ($_SESSION['isAdmin'] != 1) {
+            $app->redirect('/account');
+        }
+        
     	$createTableModel = new CreateTableModel();
     	$createTableModel->checkIfTableExistIfNotCreateIt();
 

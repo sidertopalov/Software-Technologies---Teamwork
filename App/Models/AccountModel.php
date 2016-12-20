@@ -1,15 +1,6 @@
 <?php
 
 namespace App\Models;
-use  Doctrine\ORM\Mapping as ORM;
-
-
-/**
- * User
- *
- * @ORM\Table(name="users")
- * @ORM\Entity(repositoryClass="Account\Repository\UserRepository")
- */
 
 class AccountModel {
 
@@ -41,7 +32,6 @@ class AccountModel {
             'first_name' => $this->firstName,
             'last_name'=> $this->lastName,
         );
-
 
         $app->db['default']->where('email',$_SESSION['userEmail'])->update('users',$data);
 

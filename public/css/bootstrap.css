@@ -13,20 +13,26 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+  font-family:  sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+    height: 100%;
 }
 body {
-    background-image: url(../img/Abstract-Abstract-Background.jpg);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-     background-position: right bottom, left top;
+    background: url(../img/Abstract-Abstract-Background.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
     
-    width:100% ;
-    height:100%;
-  
+    padding: 3em 3em 0;
     
+    min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.contentNew {
+  flex: 1;
 }
 article,
 aside,
@@ -75,7 +81,7 @@ a:hover {
 
 }
 input[type="text"], input[type="password"] {
-    background: no-repeat #444;
+    background: no-repeat #808080 	;
     border: 0 none;
     font: bold 12px Arial,Helvetica,Sans-serif;
     color: gainsboro;
@@ -1132,7 +1138,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:  sans-serif, "Roboto", "Helvetica Neue", Helvetica, Arial,;
   font-size: 14px;
   line-height: 1.42857143;
   color: #3e3f3a;
@@ -4745,7 +4751,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   padding: 8px 15px;
   margin-bottom: 20px;
   list-style: none;
-  background-color: skyblue;
+  background-color: aqua;
   border-radius: 4px;
 }
 .breadcrumb > li {
@@ -7126,6 +7132,7 @@ a:active {
 }
 .buttonNew:hover {
 border-radius:20px;
+    color:white;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.7);
 }
 
@@ -7134,8 +7141,8 @@ border-radius:20px;
 .footerNew {
     
    margin-left:75%;
-    margin-top:50%;
-    margin-bottom:0%;
+    margin-top:50% ;
+    margin-bottom:0% auto;
 }
 
 
@@ -7143,7 +7150,7 @@ li a, .dropbtnNew {
     display: inline-block;
     color: #CCC;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 20px;
     text-decoration: none;
 }
 
@@ -7178,4 +7185,48 @@ li.dropdownNew {
     -webkit-column-count: 3; /* Chrome, Safari, Opera */
     -moz-column-count: 3; /* Firefox */
     column-count: 3;
+}
+
+.buttonRed {  
+
+    background-color: red; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    border-radius:25px;
+
+}
+.buttonRed:hover {
+border-radius:20px;
+    box-shadow: 0 12px 16px 0 rgba(245,0,0,0.24),0 17px 50px 0 rgba(245,0,0,0.7);
+}
+
+.buttonGreen {   
+
+    background-color: springgreen; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 2px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    border-radius:50px;
+
+}
+.buttonGreen:hover {
+border-radius:20px;
+    box-shadow: 0 12px 16px 0 rgba(0,245,0,0.24),0 17px 50px 0 rgba(0,245,0,0.7);
 }

@@ -30,7 +30,7 @@ class AjaxModel {
 
 		$this->app 		 	= \Yee\Yee::getInstance();
 		$this->loginEmail 	= $email;
-		$this->loginPass 	= $pass;
+		$this->loginPass 	= md5($pass);
 	}
 
 

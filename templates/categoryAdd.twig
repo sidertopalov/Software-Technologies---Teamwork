@@ -2,28 +2,40 @@
 
 
 <section>
-	
-	<div class="container">
+     <div class="row">
+                <div class="col-md-6">       
+                    
+                    <div class="centered">      
+                        
+                        <form class="form-box centered" method="post"  id="categoryAddForm">
+                            <div class="centered">
+                                  
+                                <div>
+                                <span style="display:none;margin-left:12px; "  class="alert alert-danger" role="alert" id="errorMessage"></span>
+                                <span style="display:none;margin-left:12px;" class="alert alert-success" role="alert" id="successMessage"></span>
+                                </div><br>                                
 
-		<div class="row">
-		<div>
-			<h3>New Category</h3>
-			<hr style="border-color: #e74c3c;">
-			<br>
-		</div>
-			<div style="display:none" class="alert alert-danger" role="alert" id="errorMessage"></div>
-			<div style="display:none" class="alert alert-success" role="alert" id="successMessage"></div>
+                              
+                                <fieldset>
+                                    <div class="col-sm-12 text-center">
+                                        <span style="color:lightgray"><h1>New</h1></span>
+                                        <span style="color:lightgray"><h1>Category</h1></span></div>
+                                </fieldset>
+                                                    
 
-			<form method="post" id="categoryAddForm">
-				<input type="text" name="newCategory" id="newCategory" placeholder="New category name.." value="" /><br><br>
-				<input id="btnCategory" type="submit" class="btn btn-primary btn-filled"  value="Create Category" />
-			</form>
-		</div>
+                                <input type="text" size="20" name="newCategory" id="newCategory" placeholder="New category name.." value="" >                                
 
-	</div>
-
-
-</section>
+                                <div id="buttonNew" style="display:block;margin-left:12px;">
+                                
+                                  
+                                    <button class="buttonNew" id="newCategory" type="submit" value="Create Category">Create</button>
+                                </div>
+                                 
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
 
 {% include "./common/footer.twig" %}

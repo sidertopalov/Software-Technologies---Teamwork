@@ -24,7 +24,7 @@ class AjaxController extends Controller{
 
         $loginEmail   = $app->request->post('loginEmail');        
         $loginPass    = $app->request->post('loginPass');
-
+        
         // Create instance of App\Models\Ajax\AjaxModel;
         $ajaxModel = new AjaxModel($loginEmail, $loginPass);
         
@@ -32,8 +32,6 @@ class AjaxController extends Controller{
 
             $error = "Fail to join! Check your email/password.";
         }
-
-
         if(isset($error)) {
 
             $data = array(
@@ -42,7 +40,6 @@ class AjaxController extends Controller{
                 'message'       => $error,
                 'error'         => false,
                 );
-
 
         } else {
             $userProperty = $ajaxModel->userProperty();
@@ -57,8 +54,6 @@ class AjaxController extends Controller{
                 'message'       => "Hello, $loginEmail",
                 'success'       => true,
                 'error'         => true,
-                
-
                 );
         }
 
@@ -77,11 +72,8 @@ class AjaxController extends Controller{
         $firstName = $app->request()->post('firstName');
         $lastName = $app->request()->post('lastName');
 
-
         $model = new AccountModel($firstName,$lastName);
         $userProperty = $model->getAccountDetails();
-
-
 
         if ( ( $userProperty['first_name'] === $firstName && $userProperty['last_name'] === $lastName ) && ( empty($pass) > 0 ) ) {
 
@@ -136,12 +128,10 @@ class AjaxController extends Controller{
         $newPass = $app->request()->post('newPass');
         $passConf = $app->request()->post('passConf');
 
-
         $model = new AccountModel();
         $userProperty = $model->getAccountDetails();
 
         $oldPassMatch = $userProperty['password'] == $oldPass;
-
 
         if (!$oldPassMatch) {
 
@@ -151,14 +141,7 @@ class AjaxController extends Controller{
         if ( !$model->validatePassword($newPass,$passConf) ) {
 
             $error = "Password do not match.";
-
         }
-
-        if (isset($error) == false) {
-
-            $model->updatePassword($newPass);
-        }
-
 
         if(isset($error)) {
 
@@ -167,8 +150,9 @@ class AjaxController extends Controller{
                 'error'         => false,
             );
 
-
         } else {
+
+            $model->updatePassword($newPass);
 
             $data = array(
                 'message'       => "Successfully updated!",
@@ -192,14 +176,12 @@ class AjaxController extends Controller{
         /** @var Yee\Yee $yee */
         $app = $this->app;
 
-
         //------> POST Variables <-------
         $articleTitle = $app->request()->post('titleArticle');
         $articleContent = $app->request()->post('contentArticle');
         $categoryName = $app->request()->post('selectId');
 
         $article = new ArticleModel();
-
 
         if( 3 > strlen($articleTitle) && strlen($articleTitle) < 64) {
 
@@ -326,6 +308,7 @@ class AjaxController extends Controller{
 
         /** @var Yee\Yee $yee */
         $app = $this->app;
+        
         //------> POST Variables <-------
         $categoryId = $app->request()->post('categoryId');
 
