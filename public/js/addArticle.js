@@ -7,7 +7,7 @@ $("#addArticle").submit(function(e){
 		data: $("#addArticle").serialize(),
 		dataType: "json",
 		success: function(data){
-			if (data.error == false ) {
+			if (data.error == true ) {
 				
 				$('#successMessage').hide();
 				$('#errorMessage').html( data.message ).fadeTo(1,1000);

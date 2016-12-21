@@ -38,7 +38,7 @@ class AjaxController extends Controller{
                 "title"         => "AjaxControllerFail",
                 'redirectTo'    => "/account",
                 'message'       => $error,
-                'error'         => false,
+                'error'         => true,
                 );
 
         } else {
@@ -53,7 +53,7 @@ class AjaxController extends Controller{
                 'redirectTo'    => "/account",
                 'message'       => "Hello, $loginEmail",
                 'success'       => true,
-                'error'         => true,
+                'error'         => false,
                 );
         }
 
@@ -99,7 +99,7 @@ class AjaxController extends Controller{
 
             $data = array(
                 'message'       => $error,
-                'error'         => false,
+                'error'         => true,
             );
 
         } else {
@@ -107,7 +107,7 @@ class AjaxController extends Controller{
             $data = array(
                 'message'       => "Successfully updated!",
                 'success'       => true,
-                'error'         => true,
+                'error'         => false,
             );
         }
 
@@ -131,6 +131,8 @@ class AjaxController extends Controller{
         $model = new AccountModel();
         $userProperty = $model->getAccountDetails();
 
+        $oldPass = $model->hashPassword($oldPass);
+
         $oldPassMatch = $userProperty['password'] == $oldPass;
 
         if (!$oldPassMatch) {
@@ -147,7 +149,7 @@ class AjaxController extends Controller{
 
             $data = array(
                 'message'       => $error,
-                'error'         => false,
+                'error'         => true,
             );
 
         } else {
@@ -157,7 +159,8 @@ class AjaxController extends Controller{
             $data = array(
                 'message'       => "Successfully updated!",
                 'success'       => true,
-                'error'         => true,
+                'redirectTo'    => '/account',
+                'error'         => false,
             );
         }
 
@@ -199,12 +202,12 @@ class AjaxController extends Controller{
                 $error = "Don't try to down my DB sucker!";
             }
         }
-
+        
         if(isset($error)) {
 
             $data = array(
                 'message'       => $error,
-                'error'         => false,
+                'error'         => true,
                 );
 
 
@@ -213,7 +216,7 @@ class AjaxController extends Controller{
             $data = array(
                 'message'       => "Succesfully updated!",
                 'success'       => true,
-                'error'         => true,
+                'error'         => false,
                 'redirectTo'    => "/category/view/". $categoryName,
             );
         }
@@ -221,7 +224,7 @@ class AjaxController extends Controller{
         echo json_encode( $data );
     }
 
-        /**
+    /**
      * @Route('/ajax/category')
      * @Name('category.index')
      * @Method('post')
@@ -251,13 +254,13 @@ class AjaxController extends Controller{
         if(isset($error)) {
             $data = array(
                 'message'       => $error,
-                'error'         => false,
+                'error'         => true,
                 );
         } else {
             $data = array(
                 'message'       => "Succesfully updated!",
                 'success'       => true,
-                'error'         => true,
+                'error'         => false,
                 );
         }
         
@@ -286,14 +289,14 @@ class AjaxController extends Controller{
 
             $data = array(
                 'message'       => $error,
-                'error'         => false,
+                'error'         => true,
             );
         } else {
 
             $data = array(
                 'message'       => "Succesfully updated!",
                 'success'       => true,
-                'error'         => true,
+                'error'         => false,
             );
         }
         echo json_encode( $data );
@@ -320,14 +323,14 @@ class AjaxController extends Controller{
 
             $data = array(
                 'message'       => $error,
-                'error'         => false,
+                'error'         => true,
                 );
         } else {
 
             $data = array(
                 'message'       => "Succesfully updated!",
                 'success'       => true,
-                'error'         => true,
+                'error'         => false,
             );
         }
         

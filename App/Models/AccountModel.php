@@ -58,11 +58,18 @@ class AccountModel {
 
         $app = $this->app;
 
+        $pass = $this->hashPassword($newPass);
+
         $data = array(
-            'password' => $newPass,
+            'password' => $pass,
         );
 
         $app->db['default']->where('email',$_SESSION['userEmail'])->update('users',$data);
+    }
+
+    public function hashPassword($pass)
+    {
+        return md5($pass);
     }
 }
 

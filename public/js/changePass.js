@@ -8,13 +8,18 @@ $("#changePass").submit(function(e){
 		data: $("#changePass").serialize(),
 		dataType: "json",
 		success: function(data){
-			if (data.error == false ) {
+			if (data.error == true ) {
 				
 				$('#successMessage').hide();
 				$('#errorMessage').html( data.message ).fadeTo(1,1000);
 			} else {
 				$('#errorMessage').hide();
 				$('#successMessage').html( data.message ).fadeTo(1,1000);
+				
+				setTimeout(function () {
+  					window.location.href = data.redirectTo; // the redirect goes here
+
+				},1000)
 			}
 		}
 	});

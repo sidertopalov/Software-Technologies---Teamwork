@@ -8,7 +8,7 @@ $("#loginForm").submit(function(e){
 		dataType: "json",
 		success: function(data)
 		{
-			if (data.error === true) {
+			if (data.error === false) {
 				window.location.replace(data.redirectTo);
 			} else {
 				alert(data.message);
